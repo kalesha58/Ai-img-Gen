@@ -36,7 +36,9 @@ const CreatePost = () => {
         });
 
         const data = await response.json();
-        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+        console.log(data.data)
+        setForm({ ...form, photo: data.data });
+        // setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
       } catch (err) {
         console.log(err);
         alert(err);
@@ -62,8 +64,8 @@ const CreatePost = () => {
           body: JSON.stringify({ ...form }),
         });
 
-        await response.json();
-        console.log(response)
+     const res=   await response.json();
+console.log(res)
         alert('Success');
         navigate('/');
       } catch (err) {
